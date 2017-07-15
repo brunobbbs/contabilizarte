@@ -45,7 +45,7 @@
   {% block extra_head %}{% endblock %}
   </head>
 
-  <body>
+  <body id="{% block body_id %}body{% endblock %}">
     <!--header start-->
     <header class="head-section">
       <div class="navbar navbar-default navbar-static-top container">
@@ -260,7 +260,7 @@
         <div class="row">
           <div class="col-lg-4 col-sm-4">
             <h1>
-              Blog
+              {% block title %}{% endblock title %}
             </h1>
           </div>
           <div class="col-lg-8 col-sm-8">
@@ -285,519 +285,39 @@
     </div>
     <!--breadcrumbs end-->
 
+    <div class="container">
+        {% nevercache %}
+        {% if messages %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="messages">
+                    {% for message in messages %}
+                    <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endnevercache %}
+    </div> <!-- / Messages -->
+
+    {% block all_content %}
     <!--container start-->
     <div class="container">
       <div class="row">
         <!--blog start-->
+        {% block main_section %}
         <div class="col-lg-9 ">
-          <div class="blog-item">
-            <div class="row">
-              <div class="col-lg-2 col-sm-2">
-                <div class="date-wrap">
-                  <span class="date">
-                    11
-                  </span>
-                  <span class="month">
-                    January
-                  </span>
-                </div>
+          {% block main %}
 
-              </div>
-              <div class="col-lg-10 col-sm-10">
-                <div class="blog-img">
-                  <img src="{% static 'img/blog/img7.jpg' %}" alt=""/>
-                </div>
-
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-2 col-sm-2 text-right">
-                <div class="author">
-                  By
-                  <a href="#">
-                    Admin
-                  </a>
-                </div>
-                <ul class="list-unstyled">
-                  <li>
-                    <a href="javascript:;">
-                      <em>
-                        travel
-                      </em>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <em>
-                        tour
-                      </em>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <em>
-                        recreation
-                      </em>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <em>
-                        tourism
-                      </em>
-                    </a>
-                  </li>
-                </ul>
-                <div class="st-view">
-                  <ul class="list-unstyled">
-                    <li>
-                      <a href="javascript:;">
-                        209 View
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;">
-                        23 Share
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;">
-                        15 comments
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-lg-10 col-sm-10">
-                <h1>
-                  <a href="blog-detail.html">
-                    Suspendisse dignissim in sem eget pulvinar. Mauris aliquam nulla at libero pretium.
-                  </a>
-                </h1>
-                <p>
-                  Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
-                </p>
-                <a href="blog-detail.html" class="btn btn-primary">
-                  Continue Reading
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="blog-item">
-            <div class="row">
-              <div class="col-lg-2 col-sm-2">
-                <div class="date-wrap">
-                  <span class="date">
-                    06
-                  </span>
-                  <span class="month">
-                    March
-                  </span>
-                </div>
-
-              </div>
-              <div class="col-lg-10 col-sm-10">
-                <div class="blog-img ">
-                  <img src="{% static 'img/blog/img6.jpg' %}" alt=""/>
-                </div>
-
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-2 col-sm-2 text-right">
-                <div class="author">
-                  By
-                  <a href="#">
-                    Admin
-                  </a>
-                </div>
-                <ul class="list-unstyled">
-                  <li>
-                    <a href="javascript:;">
-                      <em>
-                        travel
-                      </em>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <em>
-                        tour
-                      </em>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <em>
-                        recreation
-                      </em>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <em>
-                        tourism
-                      </em>
-                    </a>
-                  </li>
-                </ul>
-                <div class="st-view">
-                  <ul class="list-unstyled">
-                    <li>
-                      <a href="javascript:;">
-                        209 View
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;">
-                        23 Share
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;">
-                        15 comments
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-lg-10 col-sm-10">
-                <h1>
-                  <a href="blog-detail.html">
-                    Suspendisse dignissim in sem eget pulvinar. Mauris aliquam nulla at libero pretium.
-                  </a>
-                </h1>
-                <p>
-                  Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
-                </p>
-                <a href="blog-detail.html" class="btn btn-primary">
-                  Continue Reading
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="blog-item">
-            <div class="row">
-              <div class="col-lg-2 col-sm-2">
-                <div class="date-wrap">
-                  <span class="date">
-                    19
-                  </span>
-                  <span class="month">
-                    March
-                  </span>
-                </div>
-
-              </div>
-              <div class="col-lg-10 col-sm-10">
-                <div class="blog-img ">
-                  <img src="{% static 'img/blog/img3.jpg' %}" alt=""/>
-                </div>
-
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-2 col-sm-2 text-right">
-                <div class="author">
-                  By
-                  <a href="#">
-                    Admin
-                  </a>
-                </div>
-                <ul class="list-unstyled">
-                  <li>
-                    <a href="javascript:;">
-                      <em>
-                        travel
-                      </em>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <em>
-                        tour
-                      </em>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <em>
-                        recreation
-                      </em>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <em>
-                        tourism
-                      </em>
-                    </a>
-                  </li>
-                </ul>
-                <div class="st-view">
-                  <ul class="list-unstyled">
-                    <li>
-                      <a href="javascript:;">
-                        209 View
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;">
-                        23 Share
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;">
-                        15 comments
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-lg-10 col-sm-10">
-                <h1>
-                  <a href="blog-detail.html">
-                    Suspendisse dignissim in sem eget pulvinar. Mauris aliquam nulla at libero pretium.
-                  </a>
-                </h1>
-                <p>
-                  Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
-                </p>
-                <a href="blog-detail.html" class="btn btn-primary">
-                  Continue Reading
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="blog-item">
-            <div class="row">
-              <div class="col-lg-2 col-sm-2">
-                <div class="date-wrap">
-                  <span class="date">
-                    24
-                  </span>
-                  <span class="month">
-                    April
-                  </span>
-                </div>
-
-              </div>
-              <div class="col-lg-10 col-sm-10">
-                <div class="blog-img ">
-                  <img src="{% static 'img/blog/img4.jpg' %}" alt=""/>
-                </div>
-
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-2 col-sm-2 text-right">
-                <div class="author">
-                  By
-                  <a href="#">
-                    Admin
-                  </a>
-                </div>
-                <ul class="list-unstyled">
-                  <li>
-                    <a href="javascript:;">
-                      <em>
-                        travel
-                      </em>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <em>
-                        tour
-                      </em>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <em>
-                        recreation
-                      </em>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <em>
-                        tourism
-                      </em>
-                    </a>
-                  </li>
-                </ul>
-                <div class="st-view">
-                  <ul class="list-unstyled">
-                    <li>
-                      <a href="javascript:;">
-                        209 View
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;">
-                        23 Share
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;">
-                        15 comments
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-lg-10 col-sm-10">
-                <h1>
-                  <a href="blog-detail.html">
-                    Suspendisse dignissim in sem eget pulvinar. Mauris aliquam nulla at libero pretium.
-                  </a>
-                </h1>
-                <p>
-                  Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
-                </p>
-                <a href="blog-detail.html" class="btn btn-primary">
-                  Continue Reading
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="blog-item">
-            <div class="row">
-              <div class="col-lg-2 col-sm-2">
-                <div class="date-wrap">
-                  <span class="date">
-                    18
-                  </span>
-                  <span class="month">
-                    May
-                  </span>
-                </div>
-
-              </div>
-              <div class="col-lg-10 col-sm-10">
-                <div class="blog-img ">
-                  <img src="{% static 'img/blog/img8.jpg' %}" alt=""/>
-                </div>
-
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-2 col-sm-2 text-right">
-                <div class="author">
-                  By
-                  <a href="#">
-                    Admin
-                  </a>
-                </div>
-                <ul class="list-unstyled">
-                  <li>
-                    <a href="javascript:;">
-                      <em>
-                        travel
-                      </em>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <em>
-                        tour
-                      </em>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <em>
-                        recreation
-                      </em>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <em>
-                        tourism
-                      </em>
-                    </a>
-                  </li>
-                </ul>
-                <div class="st-view">
-                  <ul class="list-unstyled">
-                    <li>
-                      <a href="javascript:;">
-                        209 View
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;">
-                        23 Share
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;">
-                        15 comments
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-lg-10 col-sm-10">
-                <h1>
-                  <a href="blog-detail.html">
-                    Suspendisse dignissim in sem eget pulvinar. Mauris aliquam nulla at libero pretium.
-                  </a>
-                </h1>
-                <p>
-                  Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
-                </p>
-                <a href="blog-detail.html" class="btn btn-primary">
-                  Continue Reading
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="text-center">
-            <ul class="pagination">
-              <li>
-                <a href="#">
-                  «
-                </a>
-              </li>
-              <li class="active">
-                <a href="#">
-                  1
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  2
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  3
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  4
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  5
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  »
-                </a>
-              </li>
-            </ul>
-          </div>
-
+          {% endblock main %}
         </div>
+        {% endblock main_section %}
 
+        {% block right_panel %}
         <div class="col-lg-3">
           <div class="blog-side-item">
             <div class="search-row">
@@ -975,59 +495,16 @@
               </ul>
             </div>
 
-
-            <div class="archive">
-              <h3>
-                Archive
-              </h3>
-              <ul class="list-unstyled">
-                <li>
-                  <a href="javascript:;">
-                    <i class="fa fa-angle-double-right pr-10">
-                    </i>
-                    May 2014
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:;">
-                    <i class="fa fa-angle-double-right pr-10">
-                    </i>
-                    April 2014
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:;">
-                    <i class="fa fa-angle-double-right pr-10">
-                    </i>
-                    March 2014
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:;">
-                    <i class="fa fa-angle-double-right pr-10">
-                    </i>
-                    February 2014
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:;">
-                    <i class="fa fa-angle-double-right pr-10">
-                    </i>
-                    January 2014
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-
           </div>
         </div>
+        {% endblock right_panel %}
 
         <!--blog end-->
       </div>
 
     </div>
     <!--container end-->
+    {% endblock all_content %}
 
     <!--footer start-->
     <footer class="footer">
