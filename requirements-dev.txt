@@ -1,0 +1,6 @@
+-r requirements.txt
+ipython[notebook]
+pylint
+pylint-django
+pep8
+autopep8

@@ -1,0 +1,11 @@
+SECRET_KEY=0%f$0q6jfr=)wb%0i4j+6upx!d5v4x^*w&l4=x&$3m^jwc+huy
+DEBUG=True
+ALLOWED_HOSTS=127.0.0.1, .localhost
+SECURE_SSL_REDIRECT=False
+SECURE_PROXY_SSL_HEADER=HTTP_X_FORWARDED_PROTO, https
+EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
+EMAIL_HOST=localhost
+EMAIL_PORT=25
+EMAIL_USE_TLS=False
+SENDGRID_USERNAME=
+SENDGRID_PASSWORD=
