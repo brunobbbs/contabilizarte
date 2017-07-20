@@ -1048,9 +1048,9 @@ section.contact-infos {
 .btn-row { margin-bottom: 30px }
 /*blog*/
 .blog-item {
-    margin-bottom: 40px;
-    padding-bottom: 40px;
-    border-bottom: 1px dashed #ddd;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 5px solid #ebecec;
 }
 /*blog-2-col*/
 .blog-left {
