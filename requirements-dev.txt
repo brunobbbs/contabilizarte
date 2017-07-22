@@ -4,3 +4,4 @@ pylint
 pylint-django
 pep8
 autopep8
+ipdb
