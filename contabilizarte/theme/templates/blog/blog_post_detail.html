@@ -68,54 +68,21 @@
     </div>
     <div class="row">
         <div class="col-lg-2 col-sm-2 text-right">
-            <div class="author">
-                {% block blog_post_list_post_metainfo %}
-                {% editable blog_post.publish_date %}
-                    {% trans "Posted by" %}:
-                    {% with blog_post.user as author %}
-                        <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
-                    {% endwith %}
-                    {% with blog_post.categories.all as categories %}
-                        {% if categories %}
-                            {% trans "in" %}
-                            {% for category in categories %}
-                                <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
-                            {% endfor %}
-                        {% endif %}
-                    {% endwith %}
-                {% endeditable %}
-                {% endblock %}
+            <!-- AddToAny BEGIN -->
+            <div class="a2a_kit a2a_kit_size_32 a2a_default_style a2a_vertical_style" style="left:0px; top:150px; float:right">
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
             </div>
-            <ul class="list-unstyled">
-                {% block blog_post_list_post_links %}
-                {% keywords_for blog_post as tags %}
-                {% if tags %}
-                    {% spaceless %}
-                        {% for tag in tags %}
-                            <li><a href="{% url "blog_post_list_tag" tag.slug %}" class="tag">{{ tag }}</a>{% if not forloop.last %}, {% endif %}</li>
-                        {% endfor %}
-                    {% endspaceless %}
-                {% endif %}
-                {% endblock %}
-            </ul>
-            <div class="st-view">
-                <ul class="list-unstyled">
-                {% if blog_post.allow_comments %}
-                <li>
-                    {% if settings.COMMENTS_DISQUS_SHORTNAME %}
-                    <a href="{{ blog_post.get_absolute_url }}#disqus_thread"
-                        data-disqus-identifier="{% disqus_id_for blog_post %}">
-                        {% trans "Comments" %}
-                    </a>
-                    {% else %}
-                    <a href="{{ blog_post.get_absolute_url }}#comments">
-                        {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
-                    </a>
-                    {% endif %}
-                </li>
-                {% endif %}
-                </ul>
-            </div>
+            <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "ContabiliZarte";
+            a2a_config.linkurl = "http://www.contabilizarte.com.br";
+            a2a_config.locale = "pt-BR";
+            </script>
+            <script async src="https://static.addtoany.com/menu/page.js"></script>
+            <!-- AddToAny END -->
         </div>
         <div class="col-lg-10 col-sm-10">
             {% block blog_post_list_post_title %}
@@ -124,6 +91,42 @@
                 <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
             </h1>
             {% endeditable %}
+            {% endblock %}
+            {% block blog_post_list_post_metainfo %}
+             <ul class="list-inline post-meta-info">
+                {% with blog_post.user as author %}
+                <li class="meta-author">
+                    <a href="{% url "blog_post_list_author" author %}"><i class="fa fa-user"></i> {{ author.get_full_name|default:author.username }}</a>
+                </li>
+                {% endwith %}
+                <li class="meta-date">
+                    <i class="fa fa-calendar"></i> {{ blog_post.publish_date|date:'d/m/Y' }}
+                </li>
+                {% with blog_post.categories.all as categories %}
+                {% if categories %}
+                    <li>{% trans "in" %}</li>
+                    {% for category in categories %}
+                        <li><a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}</li>
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <li class="meta-comments">
+                {% if blog_post.allow_comments %}
+                    {% with blog_post.comments_count as comments_count %}
+                    {% if settings.COMMENTS_DISQUS_SHORTNAME %}
+                    <a href="{{ blog_post.get_absolute_url }}#disqus_thread"
+                        data-disqus-identifier="{% disqus_id_for blog_post %}">
+                        Comentário{{ comments_count|pluralize }}
+                    </a>
+                    {% else %}
+                    <a href="{{ blog_post.get_absolute_url }}#comments">
+                        <i class="fa fa-comment"></i> {{ comments_count }} comentário{{ comments_count|pluralize }}
+                    </a>
+                    {% endif %}
+                    {% endwith %}
+                {% endif %}
+                </li>
+            </ul>
             {% endblock %}
 
             {% block blog_post_detail_content %}
