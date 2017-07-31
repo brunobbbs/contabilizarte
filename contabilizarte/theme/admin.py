@@ -1,3 +1,6 @@
 from django.contrib import admin
+from contabilizarte.theme.models import SpecialCategory, ImportantLinks
 
-# Register your models here.
+
+admin.site.register(SpecialCategory)
+admin.site.register(ImportantLinks)
