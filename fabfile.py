@@ -460,7 +460,7 @@ def install():
     srv.create_app(ssn, "git_app", "git_230", False, env.password)
 
     # Install Python requirements
-    run("easy_install-2.7 pip")
+    run("easy_install-3.5 pip")
     run("pip install -U pip virtualenv virtualenvwrapper supervisor mercurial")
 
     # Set up supervisor
@@ -475,7 +475,7 @@ def install():
     run("mkdir -p %s" % env.venv_home)
     bashrc = "/home/%s/.bashrc" % env.user
     run("echo 'export WORKON_HOME=%s' >> %s" % (env.venv_home, bashrc))
-    run("echo 'export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7' >> %s" % bashrc)
+    run("echo 'export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.5' >> %s" % bashrc)
     run("echo 'source $HOME/bin/virtualenvwrapper.sh' >> %s" % bashrc)
 
     # Set up memcached (with 50 MB of RAM)
@@ -504,7 +504,7 @@ def create():
                 abort("Aborted at user request")
         run("virtualenv %s" % env.proj_name)
         # Make sure we don't inherit anything from the system's Python
-        run("touch %s/lib/python2.7/sitecustomize.py" % env.proj_name)
+        run("touch %s/lib/python3.5/sitecustomize.py" % env.proj_name)
 
     # Create elements with the Webfaction API
     _print(blue("Creating database and website records in the Webfaction "
