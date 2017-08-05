@@ -25,7 +25,7 @@ from fabric.colors import yellow, green, blue, red
 # Config setup #
 ################
 
-env.proj_app = real_project_name("project_name")
+env.proj_app = real_project_name("contabilizarte")
 
 conf = {}
 if sys.argv[0].split(os.sep)[-1] in ("fab", "fab-script.py"):
