@@ -6,7 +6,8 @@ class SpecialCategoryTest(TestCase):
     def test_model(self):
         SpecialCategory.objects.create(
             title='Contabilidade na Prática',
-            url='http://www.contabilizarte.com.br'
+            url='http://www.contabilizarte.com.br',
+            active=True,
         )
         self.assertTrue(SpecialCategory.objects.exists())
 
@@ -15,7 +16,8 @@ class ImportantLinksTest(TestCase):
     def test_model(self):
         ImportantLinks.objects.create(
             title='Receita Federal',
-            url='http://idg.receita.fazenda.gov.br/'
+            url='http://idg.receita.fazenda.gov.br',
+            active=True,
         )
         self.assertTrue(ImportantLinks.objects.exists())
 
