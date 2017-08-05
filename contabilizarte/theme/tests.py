@@ -13,11 +13,20 @@ class SpecialCategoryTest(TestCase):
 
 
 class ImportantLinksTest(TestCase):
-    def test_model(self):
+    def setUp(self):
         ImportantLinks.objects.create(
-            title='Receita Federal',
-            url='http://idg.receita.fazenda.gov.br',
+            title='GitHub do Bruno',
+            url='https://github.com/brunobbbs',
             active=True,
         )
+
+    def test_model(self):
         self.assertTrue(ImportantLinks.objects.exists())
+
+    def test_important_links_display_on_home_if_active(self):
+        resp = self.client.get('/')
+        self.assertContains(
+            resp,
+            '<a href="https://github.com/brunobbbs"',
+        )
 

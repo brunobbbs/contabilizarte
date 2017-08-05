@@ -49,6 +49,20 @@
 {% endblock %}
 
 {% block blog_categories %}
+{% special_links "important-links" as speciallinks %}
+{% if speciallinks %}
+<h3>{% trans "Links importantes" %}</h3>
+<ul class="list-unstyled">
+    {% for link in speciallinks %}
+    <li><a href="{{ link.url }}" target="_blank" title="{{ link.title }}"
+        >{{ link.title }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
+
+{% block speciallinks %}
 {% blog_categories as categories %}
 {% if categories %}
 <h3>{% trans "Categories" %}</h3>
