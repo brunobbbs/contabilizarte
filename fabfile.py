@@ -120,6 +120,8 @@ def get_webf_session():
     to make further API calls.
     """
     import xmlrpclib
+    import socket
+    socket.setdefaulttimeout(120)
     server = xmlrpclib.ServerProxy("https://api.webfaction.com/")
     print("Logging in to Webfaction as %s." % env.user)
     if env.password is None:
@@ -461,7 +463,8 @@ def install():
 
     # Install Python requirements
     run("easy_install-3.5 pip")
-    run("pip install -U pip virtualenv virtualenvwrapper supervisor mercurial")
+    run("easy_install-2.7 supervisor")
+    run("pip install -U virtualenv virtualenvwrapper mercurial")
 
     # Set up supervisor
     conf_path = "/home/%s/etc" % env.user
@@ -510,7 +513,6 @@ def create():
     _print(blue("Creating database and website records in the Webfaction "
                 "control panel...", bold=True))
     srv, ssn, acn = get_webf_session()
-
     # Database
     db_user = get_webf_obj(srv, ssn, "db_user", env.proj_name)
     if db_user:
