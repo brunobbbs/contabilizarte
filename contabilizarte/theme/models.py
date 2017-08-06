@@ -11,6 +11,12 @@ class SpecialLinks(models.Model):
 
 class SpecialCategory(SpecialLinks):
     """ """
+    class Meta:
+        verbose_name = 'Categoria especial'
+        verbose_name_plural = 'Categorias especiais'
 
 class ImportantLinks(SpecialLinks):
     """ """
+    class Meta:
+        verbose_name = 'Link importante'
+        verbose_name_plural = 'Links importantes'
