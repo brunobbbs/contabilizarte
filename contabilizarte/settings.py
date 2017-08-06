@@ -3,11 +3,10 @@ from __future__ import absolute_import, unicode_literals
 
 import os
 
-from decouple import Csv, config
+from decouple import config
+from dj_database_url import parse as dburl
 from django import VERSION as DJANGO_VERSION
 from django.utils.translation import ugettext_lazy as _
-
-from dj_database_url import parse as dburl
 
 ######################
 # MEZZANINE SETTINGS #
@@ -97,7 +96,7 @@ USE_MODELTRANSLATION = False
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[".contabilizarte.com.br"], cast=Csv())
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[".contabilizarte.com.br"])
 
 # Secret Key
 SECRET_KEY = config('SECRET_KEY')
