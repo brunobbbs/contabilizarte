@@ -459,7 +459,7 @@ def install():
     """
     # Install git
     srv, ssn, acn = get_webf_session()
-    srv.create_app(ssn, "contabilizarte_git_app", "git_230", False, env.password)
+    srv.create_app(ssn, "contabilizarte_git_app", "git_230", False, "ContabiliZarte")
 
     # Install Python requirements
     run("easy_install-3.5 pip")
@@ -542,9 +542,9 @@ def create():
 
     # Domain and subdomain
     dom = get_webf_obj(srv, ssn, "domain", env.live_domain, env.live_subdomain)
-    if dom:
-        abort("Domain %s already exists." % env.live_host)
-    srv.create_domain(ssn, env.live_domain, env.live_subdomain)
+    # if dom:
+    #     abort("Domain %s already exists." % env.live_host)
+    # srv.create_domain(ssn, env.live_domain, env.live_subdomain)
 
     # Site record
     site = get_webf_obj(srv, ssn, "website", env.proj_name)
