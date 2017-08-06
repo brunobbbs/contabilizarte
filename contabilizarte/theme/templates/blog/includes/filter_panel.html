@@ -48,7 +48,7 @@
 {% endif %}
 {% endblock %}
 
-{% block blog_categories %}
+{% block speciallinks %}
 {% special_links "important-links" as speciallinks %}
 {% if speciallinks %}
 <h3>{% trans "Links importantes" %}</h3>
@@ -62,7 +62,8 @@
 {% endif %}
 {% endblock %}
 
-{% block speciallinks %}
+
+{% block blog_categories %}
 {% blog_categories as categories %}
 {% if categories %}
 <h3>{% trans "Categories" %}</h3>
