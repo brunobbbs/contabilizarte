@@ -80,7 +80,7 @@ else:
 
 # Remote git repos need to be "bare" and reside separated from the project
 if env.deploy_tool == "git":
-    env.repo_path = "/home/%s/webapps/git_app/repos/%s.git" % (env.user, env.proj_name)
+    env.repo_path = "/home/%s/webapps/contabilizarte_git_app/repos/%s.git" % (env.user, env.proj_name)
 else:
     env.repo_path = env.proj_path
 
@@ -459,7 +459,7 @@ def install():
     """
     # Install git
     srv, ssn, acn = get_webf_session()
-    srv.create_app(ssn, "git_app", "git_230", False, env.password)
+    srv.create_app(ssn, "contabilizarte_git_app", "git_230", False, env.password)
 
     # Install Python requirements
     run("easy_install-3.5 pip")
