@@ -2,23 +2,19 @@ body {
   padding-top: 70px;
   padding-bottom: 30px;
 }
-
 .theme-dropdown .dropdown-menu {
   display: block;
   position: static;
   margin-bottom: 20px;
 }
-
 .theme-showcase > p > .btn {
   margin: 5px 0;
 }
-
 .tags {
     color: #666;
     font-size: 14px;
     padding-bottom: 5px;
 }
-
 .post-navigation {
     border-bottom: 5px solid #ebecec;
     padding-bottom: 20px;

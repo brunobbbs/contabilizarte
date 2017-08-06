@@ -3,13 +3,31 @@ from contabilizarte.theme.models import SpecialCategory, ImportantLinks
 
 
 class SpecialCategoryTest(TestCase):
-    def test_model(self):
+    def setUp(self):
         SpecialCategory.objects.create(
             title='Contabilidade na Prática',
             url='http://www.contabilizarte.com.br',
             active=True,
         )
+
+    def test_model(self):
         self.assertTrue(SpecialCategory.objects.exists())
+
+    def test_important_links_display_on_home_if_active(self):
+        SpecialCategory.objects.create(
+            title='Job Dicas',
+            url='http://www.contabilizarte.com.br/category/job-dicas',
+            active=False,
+        )
+        resp = self.client.get('/')
+        self.assertNotContains(
+            resp,
+            '<a href="http://www.contabilizarte.com.br/category/job-dicas"',
+        )
+        self.assertContains(
+            resp,
+            '<a href="http://www.contabilizarte.com.br"',
+        )
 
 
 class ImportantLinksTest(TestCase):
@@ -38,4 +56,3 @@ class ImportantLinksTest(TestCase):
             resp,
             '<a href="https://github.com/brunobbbs"',
         )
-

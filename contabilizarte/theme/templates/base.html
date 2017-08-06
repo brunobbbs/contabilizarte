@@ -1,4 +1,4 @@
-{% load pages_tags mezzanine_tags i18n staticfiles %}
+{% load pages_tags mezzanine_tags i18n staticfiles speciallinks %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
   <head>
@@ -70,26 +70,28 @@
     </header>
     <!--header end-->
 
-    <!--breadcrumbs start-->
-    <div class="breadcrumbs">
+    <!--Special categories start-->
+    <div class="special-categories">
       <div class="container">
         <div class="row">
-          <div class="col-lg-4 col-sm-4">
-            <h1>
-              {% block title %}{% endblock title %}
-            </h1>
-          </div>
-          <div class="col-lg-8 col-sm-8">
-            <ol class="breadcrumb pull-right">
-              {% spaceless %}
-              {% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
-              {% endspaceless %}
-            </ol>
+          <div class="col-md-12">
+            <ul class="nav navbar-nav">
+              {% special_links "category" as special_category %}
+              {% if special_category %}
+                {% for link in special_category %}
+                <li>
+                  <a href="{{ link.url }}" target="_blank" title="{{ link.title }}" class="btn btn-info">
+                    {{ link.title }}
+                  </a>
+                </li>
+                {% endfor %}
+              {% endif %}
+            </ul>
           </div>
         </div>
       </div>
     </div>
-    <!--breadcrumbs end-->
+    <!--Special categories end-->
 
     <div class="container">
         {% nevercache %}
