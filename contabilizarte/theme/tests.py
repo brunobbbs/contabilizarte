@@ -15,8 +15,8 @@ class SpecialCategoryTest(TestCase):
 class ImportantLinksTest(TestCase):
     def setUp(self):
         ImportantLinks.objects.create(
-            title='GitHub do Bruno',
-            url='https://github.com/brunobbbs',
+            title='ContabiliZarte',
+            url='http://www.contabilizarte.com.br',
             active=True,
         )
 
@@ -24,8 +24,17 @@ class ImportantLinksTest(TestCase):
         self.assertTrue(ImportantLinks.objects.exists())
 
     def test_important_links_display_on_home_if_active(self):
+        ImportantLinks.objects.create(
+            title='GitHub do Bruno',
+            url='https://github.com/brunobbbs',
+            active=False,
+        )
         resp = self.client.get('/')
         self.assertContains(
+            resp,
+            '<a href="http://www.contabilizarte.com.br"',
+        )
+        self.assertNotContains(
             resp,
             '<a href="https://github.com/brunobbbs"',
         )
