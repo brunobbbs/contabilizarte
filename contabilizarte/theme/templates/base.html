@@ -76,12 +76,14 @@
         <div class="row">
           <div class="col-md-12">
             <ul class="nav navbar-nav">
-              {% special_links "category" as special_category %}
+              {% render_special_categories as special_category %}
               {% if special_category %}
                 {% for link in special_category %}
                 <li>
-                  <a href="{{ link.url }}" target="_blank" title="{{ link.title }}" class="btn btn-info">
-                    {{ link.title }}
+                  <a href="{{ link.0.url }}" target="_blank" title="{{ link.0.title }}"
+                     class="sc-buttons btnsx-btn  btnsx-btn-block btnsx-reveal btnsx-animation-fadeInRightBig btn-{{ link.1 }}"
+                     data-animation="hover" data-animation-type="swing" style="visibility: visible;">
+                     <span class="btnsx-text-primary ">{{ link.0.title }}</span>
                   </a>
                 </li>
                 {% endfor %}
