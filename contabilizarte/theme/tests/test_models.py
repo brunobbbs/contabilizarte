@@ -29,6 +29,15 @@ class SpecialCategoryTest(TestCase):
             '<a href="http://www.contabilizarte.com.br"',
         )
 
+    def test_special_categories_display_two_times_if_show_right_is_true(self):
+        SpecialCategory.objects.filter(pk=1).update(show_right=True)
+        resp = self.client.get('/')
+        self.assertContains(
+            resp,
+            '<a href="http://www.contabilizarte.com.br"',
+            2
+        )
+
 
 class ImportantLinksTest(TestCase):
     def setUp(self):

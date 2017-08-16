@@ -1,4 +1,5 @@
 from django import template
+from itertools import chain
 from contabilizarte.theme.models import SpecialCategory, ImportantLinks
 
 register = template.Library()
@@ -9,8 +10,11 @@ CATEGORIES_COLOR_ORDERING = ['laranja', 'azul', 'verde', 'amarelo']
 
 @register.simple_tag
 def render_important_links():
-    return ImportantLinks.objects.filter(active=True)
-
+    importantlinks = ImportantLinks.objects.filter(active=True)
+    specialcategories = SpecialCategory.objects.filter(
+        show_right=True, active=True
+    )
+    return list(chain(importantlinks, specialcategories))
 
 @register.simple_tag
 def render_special_categories():

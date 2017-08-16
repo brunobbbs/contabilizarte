@@ -11,6 +11,11 @@ class SpecialLinks(models.Model):
 
 class SpecialCategory(SpecialLinks):
     """ """
+    show_right = models.BooleanField(
+        'Exibir junto com links importantes?',
+        default=False
+    )
+
     class Meta:
         verbose_name = 'Categoria especial'
         verbose_name_plural = 'Categorias especiais'
