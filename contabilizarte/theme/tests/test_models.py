@@ -13,7 +13,7 @@ class SpecialCategoryTest(TestCase):
     def test_model(self):
         self.assertTrue(SpecialCategory.objects.exists())
 
-    def test_important_links_display_on_home_if_active(self):
+    def test_special_categories_display_on_home_if_active(self):
         SpecialCategory.objects.create(
             title='Job Dicas',
             url='http://www.contabilizarte.com.br/category/job-dicas',

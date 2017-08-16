@@ -16,6 +16,7 @@ def render_important_links():
     )
     return list(chain(importantlinks, specialcategories))
 
+
 @register.simple_tag
 def render_special_categories():
     categories = SpecialCategory.objects.filter(active=True)
