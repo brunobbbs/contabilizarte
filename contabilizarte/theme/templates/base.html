@@ -194,15 +194,12 @@
             {% keywords_for blog.blogpost as tags %}
             {% if tags %}
             <h1>{% trans "Tags" %}</h1>
-            <ul class="list-inline tag-cloud">
+            <div id="tag-cloud">
             {% for tag in tags %}
-            <li>
-                <a href="{% url "blog_post_list_tag" tag.slug %}"
-                    class="tag-weight-{{ tag.weight }}">{{ tag }}</a>
-                ({{ tag.item_count }})
-            </li>
+              <a href="{% url "blog_post_list_tag" tag.slug %}"
+                  class="tag-weight-{{ tag.weight }}" rel="{{ tag.item_count }}">{{ tag }}</a>
             {% endfor %}
-            </ul>
+            </div>
             {% endif %}
             {% endblock %}
           </div>
@@ -281,6 +278,8 @@
     </script>
     <script type="text/javascript" src="{% static 'assets/owlcarousel/owl.carousel.js' %}">
     </script>
+    <script type="text/javascript" src="{% static 'js/jquery.tagcloud.min.js' %}">
+    </script>
 
     <script src="{% static 'js/jquery.easing.min.js' %}">
     </script>
@@ -296,6 +295,14 @@
     <script src="{% static 'js/wow.min.js' %}">
     </script>
     <script>
+      $.fn.tagcloud.defaults = {
+        size: {start: 14, end: 18, unit: 'pt'},
+        color: {start: '#cde', end: '#f52'}
+      };
+
+      $(function () {
+        $('#tag-cloud a').tagcloud();
+      });
       wow = new WOW(
         {
           boxClass:     'wow',      // default
