@@ -1,4 +1,4 @@
-{% load pages_tags mezzanine_tags i18n staticfiles speciallinks %}
+{% load pages_tags mezzanine_tags i18n staticfiles keyword_tags speciallinks %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
   <head>
@@ -160,24 +160,23 @@
               <p>
                 Uma maneira divertida de aprender contabilidade e finanças :)
               </p>
+              <br />
+              <h1>
+                Entre em Contato!
+              </h1>
+              <address>
+                <p>
+                  <i class="fa fa-envelope pr-10">
+                  </i>
+                  Email :
+                  <a href="javascript:;">
+                    contato@contabilizarte.com.br
+                  </a>
+                </p>
+              </address>
             </div>
           </div>
           <div class="col-lg-3 col-sm-3 address wow fadeInUp" data-wow-duration="2s" data-wow-delay=".1s">
-            <h1>
-              Entre em Contato!
-            </h1>
-            <address>
-              <p>
-                <i class="fa fa-envelope pr-10">
-                </i>
-                Email :
-                <a href="javascript:;">
-                  contato@contabilizarte.com.br
-                </a>
-              </p>
-            </address>
-          </div>
-          <div class="col-lg-3 col-sm-3 wow fadeInUp" data-wow-duration="2s" data-wow-delay=".3s">
             <h1>
               ContabiliZarte na rede!
             </h1>
@@ -190,12 +189,51 @@
                   </blockquote>
             </div>
           </div>
+          <div class="col-lg-3 col-sm-3 wow fadeInUp" data-wow-duration="2s" data-wow-delay=".3s">
+            {% block blog_keywords %}
+            {% keywords_for blog.blogpost as tags %}
+            {% if tags %}
+            <h1>{% trans "Tags" %}</h1>
+            <ul class="list-inline tag-cloud">
+            {% for tag in tags %}
+            <li>
+                <a href="{% url "blog_post_list_tag" tag.slug %}"
+                    class="tag-weight-{{ tag.weight }}">{{ tag }}</a>
+                ({{ tag.item_count }})
+            </li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            {% endblock %}
+          </div>
           <div class="col-lg-3 col-sm-3">
             <div class="page-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
               <h1>
                 Navegação
               </h1>
               {% page_menu "pages/menus/footer_tree.html" %}
+              <br />
+              {% block blog_feeds %}
+              <h1>{% trans "Feeds" %}</h1>
+              <ul class="page-footer-list footer-tree-menu-level-{{ branch_level }}">
+                {% if tag %}
+                  <li><i class="fa fa-angle-right"></i> <a href="{% url "blog_post_feed_tag" tag.slug "rss" %}">{% trans "RSS" %}</a></li>
+                  <li><i class="fa fa-angle-right"></i> <a href="{% url "blog_post_feed_tag" tag.slug "atom" %}">{% trans "Atom" %}</a></li>
+                {% endif %}
+                {% if category %}
+                    <li><i class="fa fa-angle-right"></i> <a href="{% url "blog_post_feed_category" category.slug "rss" %}">{% trans "RSS" %}</a> </li>
+                    <li><i class="fa fa-angle-right"></i> <a href="{% url "blog_post_feed_category" category.slug "atom" %}">{% trans "Atom" %}</a></li>
+                {% endif %}
+                {% if author %}
+                    <li><i class="fa fa-angle-right"></i> <a href="{% url "blog_post_feed_author" author.username "rss" %}">{% trans "RSS" %}</a> </li>
+                    <li><i class="fa fa-angle-right"></i> <a href="{% url "blog_post_feed_author" author.username "atom" %}">{% trans "Atom" %}</a></li>
+                {% endif %}
+                {% if not tag and not category and not author %}
+                    <li><i class="fa fa-angle-right"></i> <a href="{% url "blog_post_feed" "rss" %}">{% trans "RSS" %}</a> </li>
+                    <li><i class="fa fa-angle-right"></i> <a href="{% url "blog_post_feed" "atom" %}">{% trans "Atom" %}</a></li>
+                {% endif %}
+              </ul>
+              {% endblock %}
             </div>
           </div>
         </div>
