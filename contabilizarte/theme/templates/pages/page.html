@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load mezzanine_tags keyword_tags pages_tags %}
+
+{% block meta_title %}{{ page.meta_title }}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ page.description }}
+{% endmetablock %}{% endblock %}
+
+{% block page_header %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-sm-4">
+                    <h1>
+                        {% editable page.title %}{{ page.title }}{% endeditable %}
+                    </h1>
+                    </div>
+                    <div class="col-lg-8 col-sm-8">
+                    <ol class="breadcrumb pull-right">
+                        {% page_menu "pages/menus/breadcrumb.html" %}
+                    </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block main %}
+{% endblock main %}
+
+{% block right_panel %}
+{% include "blog/includes/filter_panel.html" %}
+{% endblock %}
