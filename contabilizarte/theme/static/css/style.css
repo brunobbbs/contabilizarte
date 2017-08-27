@@ -28,10 +28,17 @@ h5,
 h6 {
     font-family: 'Lato', sans-serif;
     /*font-family: 'Open Sans', sans-serif;*/
+    color: #ff8300;
 }
-a { color: #444e67 }
-a:hover { color: #ff8300 }
-p { line-height: 22px }
+a { color: #ff8300 }
+a:hover { color: #444e67 }
+.right-column a {
+    color: #444e67
+}
+.right-column a:hover {
+    color: #ff8300
+}
+p { line-height: 30px }
 /*header*/
 .head-section { border-bottom: 1px solid #eee }
 .head-section .navbar {
