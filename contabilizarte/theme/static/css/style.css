@@ -3104,3 +3104,6 @@ a.btn-amarelo:hover {
     background-color: #aea611 !important;
     border-color: #aea611 !important;
 }
+.post-content img {
+    margin: 10px;
+}
