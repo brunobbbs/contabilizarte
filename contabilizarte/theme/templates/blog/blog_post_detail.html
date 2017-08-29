@@ -1,5 +1,5 @@
 {% extends "blog/blog_post_list.html" %}
-{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n disqus_tags %}
+{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n disqus_tags static %}
 
 {% block meta_title %}{{ blog_post.meta_title }}{% endblock %}
 
@@ -131,6 +131,26 @@
             </div>
             {% endeditable %}
             {% endblock %}
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="author-box">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="author-avatar">
+                    <img src="{% static 'img/cibelly-barreto-contadora-rj.jpg' %}" class="img-thumbnail rounded float-left" alt="">
+                </div>
+                <div class="author-info">
+                    <h4 class="heading-single"><span>Cibelly Barreto</span></h4>
+                    <p>Contadora, 26 anos, de Brasília para o Rio de Janeiro,
+                        apaixonada pela profissão. Nove anos de experiência profissional, sendo quatro em contabilidade
+                        e cinco na área financeira. Busca constantemente conhecimentos e crescimento profissional.
+                        Sonha em abraçar o mundo e contribuir compartilhando informações com a sociedade.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
