@@ -1158,6 +1158,16 @@ section.contact-infos {
 }
 .author a,
 .st-view a { color: #ff8300 }
+.author-info p {
+    text-align: justify;
+}
+.author-avatar img {
+    width: 150px;
+    height: 195px;
+    position: relative;
+    float: left;
+    margin-right: 10px;
+}
 .st-view { margin-top: 20px }
 .st-view ul li { margin-bottom: 5px }
 .blog-side-item h3 {
@@ -1215,6 +1225,7 @@ ul.tag li a {
     display: inline-block;
     width: 100%;
     font-weight: 300;
+    margin-top: 20px;
 }
 .footer h1 {
     font-size: 20px;
@@ -3106,4 +3117,7 @@ a.btn-amarelo:hover {
 }
 .post-content img {
     margin: 10px;
+}
+.main-content img {
+    margin-right: 10px;
 }
