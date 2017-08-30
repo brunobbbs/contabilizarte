@@ -21,9 +21,9 @@
 <meta property="og:title" content="{{ blog_post.title }}" />
 <meta property="og:locale" content="pt_BR" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="{{ blog_post.get_absolute_url }}" />
+<meta property="og:url" content="http://www.contabilizarte.com.br{{ blog_post.get_absolute_url }}" />
 {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
-<meta property="og:image" content="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 640 395 %}" />
+<meta property="og:image" content="http://www.contabilizarte.com.br{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 640 395 %}" />
 {% endif %}
 <meta property="og:description" content="{{ blog_post.description }}"/>
 <!-- twitter meta -->
@@ -33,7 +33,7 @@
 <meta name="twitter:title" content="{{ blog_post.title }}">
 <meta name="twitter:description" content="{{ blog_post.description }}">
 {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
-<meta name="twitter:image" content="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 640 395 %}">
+<meta name="twitter:image" content="http://www.contabilizarte.com.br{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 640 395 %}">
 <meta name="twitter:image:alt" content="{{ blog_post.title }}">
 {% endif %}
 {% endblock %}
