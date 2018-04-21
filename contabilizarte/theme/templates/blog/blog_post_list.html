@@ -102,7 +102,7 @@
 
             {% block blog_post_list_post_content %}
             {% editable blog_post.content %}
-            {{ blog_post.description_from_content|safe }}
+            {{ blog_post.description|safe }}
             {% endeditable %}
             {% endblock %}
             <a href="{{ blog_post.get_absolute_url }}" class="btn btn-default">Continue lendo</a>
